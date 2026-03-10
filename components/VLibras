@@ -1,0 +1,94 @@
+import "./globals.css";
+import type { Metadata } from "next";
+import Link from "next/link";
+import VLibras from "@/components/VLibras"; // 👈 IMPORTAÇÃO
+
+export const metadata: Metadata = {
+  title: "Hub Literário",
+  description:
+    "Plataforma para descobrir, cadastrar e favoritar clubes de leitura.",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="pt-BR">
+      <body className="min-h-screen flex flex-col bg-zinc-50 text-zinc-900 antialiased">
+        
+        {/* Skip to content (Acessibilidade) */}
+        <a
+          href="#conteudo"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-indigo-600 text-white px-4 py-2 rounded"
+        >
+          Pular para o conteúdo
+        </a>
+
+        {/* Navbar */}
+        <header className="bg-white shadow-sm border-b sticky top-0 z-50">
+          <nav
+            className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"
+            aria-label="Menu principal"
+          >
+            <Link
+              href="/"
+              className="text-xl font-bold text-indigo-600 hover:opacity-80 transition"
+            >
+              Hub Literário
+            </Link>
+
+            <div className="flex gap-6 text-sm font-medium">
+              <Link
+                href="/"
+                className="hover:text-indigo-600 transition focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded"
+              >
+                Início
+              </Link>
+
+              <Link
+                href="/cadastro"
+                className="hover:text-indigo-600 transition focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded"
+              >
+                Cadastrar Clube
+              </Link>
+
+              <Link
+                href="/favoritos"
+                className="hover:text-indigo-600 transition focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded"
+              >
+                Favoritos
+              </Link>
+            </div>
+          </nav>
+        </header>
+
+        {/* Conteúdo principal */}
+        <main
+          id="conteudo"
+          className="flex-1 max-w-6xl mx-auto w-full px-6 py-10"
+        >
+          {children}
+        </main>
+
+        {/* Footer */}
+        <footer className="border-t bg-white mt-16">
+          <div className="max-w-6xl mx-auto px-6 py-6 text-center text-sm text-zinc-500 space-y-2">
+            <p>
+              © {new Date().getFullYear()} Hub Literário
+            </p>
+            <p>
+              Projeto Integrador — Plataforma inspirada em comunidades como{" "}
+              <span className="font-medium">Goodreads</span>.
+            </p>
+          </div>
+        </footer>
+
+        {/* 👇 AQUI ESTAVA FALTANDO */}
+        <VLibras />
+
+      </body>
+    </html>
+  );
+}

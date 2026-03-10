@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* ============================= */
+/* Variáveis base do tema */
+/* ============================= */
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --focus-color: #4f46e5;
+}
+
+/* ============================= */
+/* Modo escuro automático */
+/* ============================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* ============================= */
+/* Estilo global do site */
+/* ============================= */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ============================= */
+/* ACESSIBILIDADE */
+/* ============================= */
+
+/* Foco visível para teclado */
+
+:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 3px;
+}
+
+/* ============================= */
+/* MODO ALTO CONTRASTE */
+/* ============================= */
+
+body.contrast-mode {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* containers principais */
+
+body.contrast-mode header,
+body.contrast-mode footer,
+body.contrast-mode main,
+body.contrast-mode div {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* links */
+
+body.contrast-mode a {
+  color: #ffff00 !important;
+  text-decoration: underline;
+}
+
+/* botões */
+
+body.contrast-mode button {
+  background: #ffff00 !important;
+  color: #000 !important;
+  border: 2px solid #fff !important;
+}
+
+/* inputs */
+
+body.contrast-mode input,
+body.contrast-mode textarea,
+body.contrast-mode select {
+  background: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+/* cards */
+
+body.contrast-mode .bg-white {
+  background: #000 !important;
+  border: 2px solid #fff !important;
+}
+
+/* botões principais */
+
+body.contrast-mode .bg-indigo-600 {
+  background: #ffff00 !important;
+  color: #000 !important;
+}
